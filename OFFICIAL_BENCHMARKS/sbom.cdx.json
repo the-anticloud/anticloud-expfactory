@@ -1,0 +1,46 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:fae37341-e8db-5a2e-875a-90007fec0296",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-06T06:30:54Z",
+    "component": {
+      "type": "application",
+      "name": "EXPFACTORY",
+      "version": "885b54583b69",
+      "bom-ref": "pkg:generic/anticloud/EXPFACTORY@885b54583b69",
+      "purl": "pkg:generic/anticloud/EXPFACTORY@885b54583b69",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "anticloud:source-commit",
+        "value": "885b54583b696762782c7580c7d9ceed40278938"
+      },
+      {
+        "name": "anticloud:source-url",
+        "value": "https://github.com/expfactory/expfactory"
+      },
+      {
+        "name": "anticloud:tier",
+        "value": "tier-agent"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "expfactory",
+      "version": "=expfactory.cli:main",
+      "purl": "pkg:pypi/expfactory@expfactory.cli:main",
+      "bom-ref": "pypi/expfactory@=expfactory.cli:main"
+    }
+  ]
+}

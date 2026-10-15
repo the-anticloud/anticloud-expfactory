@@ -1,0 +1,317 @@
+{
+  "schema": "anticloud.tier-bench/1",
+  "project": "EXPFACTORY",
+  "source": {
+    "repo_path": "E:\\fenta\\Downloads\\The Anticloud\\ANTICLOUD_REPOS\\PSYCHOLOGY\\EXPFACTORY\\UPSTREAM_CLONE",
+    "git": {
+      "head": "885b54583b696762782c7580c7d9ceed40278938",
+      "url": "https://github.com/expfactory/expfactory",
+      "branch": "master",
+      "committed_at": "2022-10-04T10:04:09-06:00"
+    }
+  },
+  "metrics": {
+    "files_total": 147,
+    "source_files_scanned": 52,
+    "lines_of_code": 5778,
+    "languages": {
+      ".py": 45,
+      ".png": 37,
+      ".html": 18,
+      ".md": 8,
+      ".sh": 7,
+      "(none)": 5,
+      ".css": 5,
+      ".json": 4,
+      ".conf": 3,
+      ".js": 3,
+      ".svg": 2,
+      ".cff": 1,
+      ".in": 1,
+      ".bib": 1,
+      ".ico": 1
+    }
+  },
+  "licence": {
+    "spdx": "BSD-3-Clause",
+    "class": "A",
+    "source_file": "LICENSE",
+    "redistribution_allowed": true
+  },
+  "dependencies": {
+    "count": 1,
+    "unique": 1,
+    "by_ecosystem": {
+      "pypi": 1
+    },
+    "list": [
+      {
+        "ecosystem": "pypi",
+        "name": "expfactory",
+        "version": "=expfactory.cli:main",
+        "source_file": "setup.py",
+        "raw": "expfactory=expfactory.cli:main"
+      }
+    ]
+  },
+  "owasp_top10": {
+    "total_findings": 15,
+    "files_with_findings": 14,
+    "severity": {
+      "high": 4,
+      "medium": 2,
+      "low": 9
+    },
+    "categories": {
+      "A01-BrokenAccessControl": {
+        "count": 0,
+        "findings": []
+      },
+      "A02-CryptographicFailures": {
+        "count": 0,
+        "findings": []
+      },
+      "A03-Injection": {
+        "count": 4,
+        "findings": [
+          {
+            "severity": "high",
+            "file": "setup.py",
+            "line": 18,
+            "cwe": "CWE-95",
+            "snippet": "exec(filey.read(), lookup)"
+          },
+          {
+            "severity": "high",
+            "file": "expfactory/utils.py",
+            "line": 131,
+            "cwe": "CWE-78",
+            "snippet": "return_code = os.system(\"git clone %s %s\" % (url, dest))"
+          },
+          {
+            "severity": "high",
+            "file": "expfactory/cli/install.py",
+            "line": 128,
+            "cwe": "CWE-78",
+            "snippet": "os.system(\"mkdir -p %s\" % dest)"
+          },
+          {
+            "severity": "high",
+            "file": "expfactory/cli/logs.py",
+            "line": 42,
+            "cwe": "CWE-78",
+            "snippet": "os.system(\"cat %s\" % logs)"
+          }
+        ]
+      },
+      "A04-InsecureDesign": {
+        "count": 2,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "expfactory/experiment.py",
+            "line": 63,
+            "cwe": "CWE-",
+            "snippet": "# TODO at some point in this workflow we would want to grab instructions from help"
+          },
+          {
+            "severity": "low",
+            "file": "expfactory/database/filesystem.py",
+            "line": 75,
+            "cwe": "CWE-",
+            "snippet": "/scif/data/expfactory/xxxx-xxxx   xxxx-xxxx[studyid]"
+          }
+        ]
+      },
+      "A05-SecurityMisconfiguration": {
+        "count": 2,
+        "findings": [
+          {
+            "severity": "medium",
+            "file": "expfactory/forms.py",
+            "line": 49,
+            "cwe": "CWE-1188",
+            "snippet": "randomize = BooleanField(\"randomize\", default=True)"
+          },
+          {
+            "severity": "medium",
+            "file": "expfactory/cli/__init__.py",
+            "line": 226,
+            "cwe": "CWE-1188",
+            "snippet": "default=True,"
+          }
+        ]
+      },
+      "A06-VulnerableComponents": {
+        "count": 1,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "expfactory/version.py",
+            "line": 56,
+            "cwe": "CWE-1104",
+            "snippet": "# Flask-Cors==3.0.6"
+          }
+        ]
+      },
+      "A07-AuthFailures": {
+        "count": 0,
+        "findings": []
+      },
+      "A08-SoftwareDataIntegrity": {
+        "count": 2,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "expfactory/server.py",
+            "line": 173,
+            "cwe": "CWE-319",
+            "snippet": "origins=\"http://127.0.0.1\","
+          },
+          {
+            "severity": "low",
+            "file": "expfactory/version.py",
+            "line": 37,
+            "cwe": "CWE-319",
+            "snippet": "PACKAGE_URL = \"http://github.com/expfactory/expfactory\""
+          }
+        ]
+      },
+      "A09-LoggingMonitoringFailures": {
+        "count": 0,
+        "findings": []
+      },
+      "A10-SSRF": {
+        "count": 4,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "expfactory/views/general.py",
+            "line": 67,
+            "cwe": "CWE-601",
+            "snippet": "return redirect(\"/start\")"
+          },
+          {
+            "severity": "low",
+            "file": "expfactory/views/headless.py",
+            "line": 48,
+            "cwe": "CWE-601",
+            "snippet": "redirect(\"/start\")"
+          },
+          {
+            "severity": "low",
+            "file": "expfactory/views/main.py",
+            "line": 89,
+            "cwe": "CWE-601",
+            "snippet": "return redirect(\"/next\")"
+          },
+          {
+            "severity": "low",
+            "file": "expfactory/views/utils.py",
+            "line": 66,
+            "cwe": "CWE-601",
+            "snippet": "return redirect(\"/\")"
+          }
+        ]
+      }
+    }
+  },
+  "owasp_llm_top10": {
+    "total_findings": 0,
+    "files_with_findings": 0,
+    "severity": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "categories": {
+      "LLM01-PromptInjection": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM02-SensitiveInfoDisclosure": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM03-SupplyChain": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM04-DataPoisoning": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM05-ImproperOutputHandling": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM06-ExcessiveAgency": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM07-SystemPromptLeak": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM08-VectorEmbeddingWeaknesses": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM09-Misinformation": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM10-UnboundedConsumption": {
+        "count": 0,
+        "findings": []
+      }
+    }
+  },
+  "sbom": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.5",
+    "serialNumber": "urn:uuid:fae37341-e8db-5a2e-875a-90007fec0296",
+    "version": 1,
+    "metadata": {
+      "timestamp": "2026-10-06T06:30:54Z",
+      "component": {
+        "type": "application",
+        "name": "EXPFACTORY",
+        "version": "885b54583b69",
+        "bom-ref": "pkg:generic/anticloud/EXPFACTORY@885b54583b69",
+        "purl": "pkg:generic/anticloud/EXPFACTORY@885b54583b69",
+        "licenses": [
+          {
+            "license": {
+              "id": "BSD-3-Clause"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "anticloud:source-commit",
+          "value": "885b54583b696762782c7580c7d9ceed40278938"
+        },
+        {
+          "name": "anticloud:source-url",
+          "value": "https://github.com/expfactory/expfactory"
+        },
+        {
+          "name": "anticloud:tier",
+          "value": "tier-agent"
+        }
+      ]
+    },
+    "components": [
+      {
+        "type": "library",
+        "name": "expfactory",
+        "version": "=expfactory.cli:main",
+        "purl": "pkg:pypi/expfactory@expfactory.cli:main",
+        "bom-ref": "pypi/expfactory@=expfactory.cli:main"
+      }
+    ]
+  },
+  "elapsed_seconds": 20.99
+}
